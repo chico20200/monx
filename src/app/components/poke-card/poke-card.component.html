@@ -1,0 +1,43 @@
+<article class="card" [class.shiny]="shiny()">
+  <header class="band">
+    <span class="id">{{ padId(pokemon().id) }}</span>
+    <h2 class="name">{{ prettyName(pokemon().name) }}</h2>
+    <app-type-icons [types]="tipos()" [size]="30" />
+  </header>
+
+  @if (categoria()) {
+    <div class="ribbon">{{ categoria() }}</div>
+  }
+
+  <button class="window" type="button" (click)="zoom.emit(imagen())" aria-label="Ampliar imagen">
+    <div class="circle">
+      <img [src]="imagen()" [alt]="pokemon().name" (error)="onImgError($event)" />
+    </div>
+    @if (shiny()) {
+      <span class="shiny-tag">✦ Shiny</span>
+    }
+    <span class="zoom-hint">⤢</span>
+  </button>
+
+  <section class="info">
+    <div class="left">
+      <div class="fact"><span>Altura</span><strong class="num">{{ meters(pokemon().height) }}</strong></div>
+      <div class="fact"><span>Peso</span><strong class="num">{{ kilos(pokemon().weight) }}</strong></div>
+      <div class="fact"><span>Experiencia</span><strong class="num">{{ pokemon().base_experience ?? '—' }}</strong></div>
+      <app-type-icons class="chips" [types]="tipos()" mode="chip" />
+      <h3>Habilidades</h3>
+      <ul>
+        @for (a of pokemon().abilities; track a.ability.name) {
+          <li>{{ prettyName(a.ability.name) }} @if (a.is_hidden) {<em>oculta</em>}</li>
+        }
+      </ul>
+    </div>
+    <div class="right pixel-panel">
+      <app-stat-bars [pokemon]="pokemon()" />
+    </div>
+  </section>
+
+  @if (descripcion()) {
+    <footer class="flavor">“{{ descripcion() }}”</footer>
+  }
+</article>

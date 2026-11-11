@@ -1,0 +1,44 @@
+// =====================================================================
+// Monx · Tokens de diseño
+// Paleta y tipografía heredadas de PokeWiki (proyecto web original).
+// =====================================================================
+:root {
+  // --- Paleta PokeWiki ---
+  --monx-blue: #3a5ca6;
+  --monx-blue-dark: #2c4683;
+  --monx-yellow: #ffcb04;
+  --monx-yellow-dark: #d9a900;
+  --monx-card: #eeeeed;       // fondo de la tarjeta (back_white)
+  --monx-ink: #333333;        // texto (black_color)
+  --monx-window: #b1b1b1;     // círculo detrás del Pokémon
+  --monx-panel: #d3d2d2;      // caja de estadísticas
+  --monx-button: #d9d9d9;     // botón "pixel 3D"
+
+  // --- Tipografías (cargadas localmente con @fontsource) ---
+  --monx-font-pixel: 'Pixelify Sans', monospace;
+  --monx-font-text: 'Bricolage Grotesque', system-ui, sans-serif;
+
+  // --- Ionic ---
+  --ion-font-family: var(--monx-font-text);
+  --ion-text-color: var(--monx-ink);
+
+  --ion-color-primary: #3a5ca6;
+  --ion-color-primary-rgb: 58, 92, 166;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #334f92;
+  --ion-color-primary-tint: #4e6caf;
+
+  --ion-color-secondary: #ffcb04;
+  --ion-color-secondary-rgb: 255, 203, 4;
+  --ion-color-secondary-contrast: #333333;
+  --ion-color-secondary-contrast-rgb: 51, 51, 51;
+  --ion-color-secondary-shade: #e0b304;
+  --ion-color-secondary-tint: #ffd01d;
+
+  --ion-toolbar-background: var(--monx-blue);
+  --ion-toolbar-color: #ffffff;
+  --ion-tab-bar-background: var(--monx-blue);
+  --ion-tab-bar-color: #c9d4ee;
+  --ion-tab-bar-color-selected: var(--monx-yellow);
+}

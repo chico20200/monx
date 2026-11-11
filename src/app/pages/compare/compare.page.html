@@ -1,0 +1,85 @@
+<ion-header>
+  <ion-toolbar class="monx-toolbar">
+    <ion-title class="monx-title">Comparar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="monx-bg">
+  <div class="page-wrap">
+    <!-- Selectores -->
+    <div class="pickers">
+      @for (lado of lados; track lado) {
+        <div class="picker" [class.right]="lado === 'b'">
+          <label>{{ lado === 'a' ? 'Carta 1' : 'Carta 2' }}</label>
+          <div class="row">
+            <input
+              class="pixel-input"
+              type="search"
+              autocomplete="off"
+              enterkeyhint="go"
+              placeholder="Nombre o #"
+              [value]="texto[lado]()"
+              (input)="escribir(lado, $any($event.target).value)"
+              (focus)="foco.set(lado)"
+              (blur)="cerrarSugerencias()"
+              (keyup.enter)="comparar()"
+            />
+            <button class="pixel-btn yellow" (click)="aleatorio(lado)" aria-label="Aleatorio">
+              <ion-icon name="dice-outline" />
+            </button>
+          </div>
+          @if (foco() === lado && sugerencias().length) {
+            <ul class="suggest">
+              @for (s of sugerencias(); track s.id) {
+                <li (mousedown)="elegir(lado, s)">#{{ s.id }} {{ prettyName(s.name) }}</li>
+              }
+            </ul>
+          }
+        </div>
+      }
+    </div>
+    <div class="buttons">
+      <button class="pixel-btn" (click)="intercambiar()"><ion-icon name="swap-horizontal-outline" />Invertir</button>
+      <button class="pixel-btn blue" (click)="comparar()">¡Comparar!</button>
+    </div>
+
+    @if (error()) {
+      <div class="state-box"><img src="assets/img/fallback.png" alt="" /><h3>Revisa la selección</h3><p>{{ error() }}</p></div>
+    }
+
+    @if (cargando()) {
+      <div class="loading"><ion-spinner name="dots" color="secondary" /></div>
+    } @else if (pokemonA() && pokemonB()) {
+      <!-- Cartas enfrentadas -->
+      <div class="versus">
+        <app-mini-card [id]="pokemonA()!.id" [name]="pokemonA()!.name" [data]="pokemonA()" (click)="verDetalle(pokemonA()!)" />
+        <span class="vs">VS</span>
+        <app-mini-card [id]="pokemonB()!.id" [name]="pokemonB()!.name" [data]="pokemonB()" (click)="verDetalle(pokemonB()!)" />
+      </div>
+
+      <section class="board">
+        <div class="types">
+          <app-type-icons [types]="tipos(pokemonA()!)" mode="chip" />
+          <span>Tipos</span>
+          <app-type-icons [types]="tipos(pokemonB()!)" mode="chip" />
+        </div>
+
+        @for (f of filas(); track f.label) {
+          <div class="line" [class.total]="f.label === 'Total'">
+            <div class="side left" [class.win]="f.gana === 'a'">
+              <span class="val num">{{ f.textoA }}</span>
+              <div class="track"><div class="fill" [style.width.%]="f.pctA"></div></div>
+            </div>
+            <span class="label">{{ f.label }}</span>
+            <div class="side right" [class.win]="f.gana === 'b'">
+              <div class="track"><div class="fill" [style.width.%]="f.pctB"></div></div>
+              <span class="val num">{{ f.textoB }}</span>
+            </div>
+          </div>
+        }
+
+        <p class="summary">🏆 {{ resumen() }}</p>
+      </section>
+    }
+  </div>
+</ion-content>

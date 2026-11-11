@@ -1,0 +1,27 @@
+# Dependencias y compilaciones
+node_modules/
+www/
+.angular/
+dist/
+.DS_Store
+
+# La carpeta android/ SÍ se versiona (contiene ícono, splash, versión y firma).
+# Solo se excluyen sus compilaciones y archivos locales:
+android/.gradle/
+android/build/
+android/app/build/
+android/app/release/
+android/local.properties
+android/.idea/
+android/captures/
+*.iml
+
+# Firma: NUNCA subir el keystore ni sus contraseñas
+*.jks
+*.keystore
+android/keystore.properties
+
+# Paquetes generados (se publican en GitHub Releases, no en el código)
+*.apk
+*.aab
+ios/

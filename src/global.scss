@@ -1,0 +1,146 @@
+@import '@ionic/angular/css/core.css';
+@import '@ionic/angular/css/normalize.css';
+@import '@ionic/angular/css/structure.css';
+@import '@ionic/angular/css/typography.css';
+@import '@ionic/angular/css/padding.css';
+@import '@ionic/angular/css/float-elements.css';
+@import '@ionic/angular/css/text-alignment.css';
+@import '@ionic/angular/css/text-transformation.css';
+@import '@ionic/angular/css/flex-utils.css';
+
+// ---------------------------------------------------------------------
+// Fondo pixel art de PokeWiki (queda fijo: ion-content no lo desplaza)
+// ---------------------------------------------------------------------
+ion-content.monx-bg {
+  --background: linear-gradient(rgba(16, 26, 54, 0.45), rgba(16, 26, 54, 0.62)),
+    url('/assets/img/fondo.jpg') center / cover no-repeat, #1f2f57;
+}
+
+// Barra superior: título pixel amarillo con sombra azul
+ion-toolbar.monx-toolbar {
+  --border-width: 0;
+  border-bottom: 4px solid var(--monx-yellow);
+}
+.monx-title {
+  font-family: var(--monx-font-pixel);
+  font-size: 1.6rem;
+  letter-spacing: 2px;
+  color: var(--monx-yellow);
+  text-shadow: 2px 2px 0 var(--monx-blue-dark), 3px 3px 0 #1c2440;
+}
+.monx-title small {
+  font-family: var(--monx-font-text);
+  font-size: 0.75rem;
+  letter-spacing: 0;
+  color: #dfe6f7;
+  text-shadow: none;
+  margin-left: 6px;
+}
+
+// ---------------------------------------------------------------------
+// Piezas reutilizables del estilo PokeWiki
+// ---------------------------------------------------------------------
+
+// Input amarillo con borde azul (buscador de PokeWiki)
+.pixel-input {
+  width: 100%;
+  min-width: 0;
+  height: 44px;
+  border-radius: 10px;
+  border: 3px solid var(--monx-blue);
+  background: var(--monx-yellow);
+  color: #1f3a8a;
+  font-family: var(--monx-font-pixel);
+  font-size: 1.15rem;
+  padding: 0 14px;
+  outline: none;
+  &::placeholder { color: rgba(31, 58, 138, 0.6); }
+  &:focus { box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.55); }
+}
+
+// Botón gris con borde inferior/derecho oscuro (efecto 3D pixel)
+.pixel-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 44px;
+  padding: 0 16px;
+  border: none;
+  border-radius: 10px;
+  background: var(--monx-button);
+  color: var(--monx-ink);
+  font-family: var(--monx-font-pixel);
+  font-size: 1.05rem;
+  border-bottom: 3px solid var(--monx-ink);
+  border-right: 3px solid var(--monx-ink);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform 80ms ease;
+  ion-icon { font-size: 1.15rem; }
+  &:active { transform: translate(2px, 2px); border-bottom-width: 1px; border-right-width: 1px; }
+  &:disabled { opacity: 0.5; }
+  &.yellow { background: var(--monx-yellow); }
+  &.blue { background: var(--monx-blue); color: #fff; border-color: #1c2440; }
+  &.active { background: var(--monx-yellow); }
+}
+
+// Caja gris con sombra dura (caja de stats de PokeWiki)
+.pixel-panel {
+  background: var(--monx-panel);
+  border-radius: 10px;
+  border-bottom: 4px solid var(--monx-ink);
+  border-right: 4px solid var(--monx-ink);
+  padding: 12px;
+}
+
+// Encabezado de sección sobre el fondo oscuro
+.section-title {
+  font-family: var(--monx-font-pixel);
+  color: var(--monx-yellow);
+  font-size: 1.25rem;
+  margin: 22px 4px 10px;
+  text-shadow: 2px 2px 0 #1c2440;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+// Mensajes (vacío, error, sin recurso)
+.state-box {
+  text-align: center;
+  background: var(--monx-card);
+  border: 4px solid var(--monx-blue);
+  border-radius: 12px;
+  padding: 18px;
+  font-family: var(--monx-font-text);
+  img { width: 72px; image-rendering: pixelated; }
+  h3 { font-family: var(--monx-font-pixel); margin: 8px 0 4px; color: var(--monx-blue); }
+  p { margin: 4px 0 12px; }
+}
+
+.page-wrap {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 14px 14px 32px;
+}
+
+// Números: la fuente pixel confunde 5/S y 8/B, así que las cifras usan la fuente de texto
+.num {
+  font-family: var(--monx-font-text) !important;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+ion-toolbar ion-back-button.monx-back {
+  --color: var(--monx-yellow);
+  --icon-font-size: 28px;
+  color: var(--monx-yellow);
+}
+
+// Modal de imagen ampliada
+ion-modal.zoom-modal {
+  --background: #10182f;
+  --width: 100%;
+  --height: 100%;
+}

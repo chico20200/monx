@@ -1,0 +1,7 @@
+{
+  "name": "monx",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

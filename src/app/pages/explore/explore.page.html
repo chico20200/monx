@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar class="monx-toolbar">
+    <div class="brand">
+      <img src="assets/img/monx.png" alt="" />
+      <span class="monx-title">MONX<small>wiki de bolsillo</small></span>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="monx-bg">
+  <div class="page-wrap">
+    <!-- Buscador estilo PokeWiki -->
+    <form class="search" (submit)="$event.preventDefault(); buscar()">
+      <input
+        class="pixel-input"
+        type="search"
+        enterkeyhint="search"
+        autocomplete="off"
+        placeholder="Buscar Pokémon o #"
+        [value]="query()"
+        (input)="onInput($any($event.target).value)"
+      />
+      <button class="pixel-btn" type="submit" aria-label="Buscar"><ion-icon name="search-outline" /></button>
+      <button class="pixel-btn yellow" type="button" (click)="aleatorio()" aria-label="Pokémon aleatorio">
+        <ion-icon name="dice-outline" />
+      </button>
+    </form>
+
+    @if (cargando()) {
+      <div class="loading"><ion-spinner name="dots" color="secondary" /><p>Barajando cartas…</p></div>
+    } @else if (error()) {
+      <div class="state-box">
+        <img src="assets/img/fallback.png" alt="" />
+        <h3>Sin conexión</h3>
+        <p>{{ error() }}</p>
+        <button class="pixel-btn yellow" (click)="cargar()">Reintentar</button>
+      </div>
+    } @else {
+      <p class="count">
+        @if (query()) {
+          {{ filtrados().length }} resultado(s) para “{{ query() }}”
+        } @else {
+          <span class="num">{{ indice().length }}</span> Pokémon · toca una carta
+        }
+      </p>
+
+      @if (!filtrados().length) {
+        <div class="state-box">
+          <img src="assets/img/fallback.png" alt="" />
+          <h3>Nada por aquí</h3>
+          <p>No hay Pokémon que coincidan con tu búsqueda.</p>
+        </div>
+      }
+
+      <div class="grid">
+        @for (p of visibles(); track p.id) {
+          <app-mini-card [id]="p.id" [name]="p.name" (click)="abrir(p.id)" />
+        }
+      </div>
+
+      <ion-infinite-scroll [disabled]="!hayMas()" (ionInfinite)="masResultados($event)">
+        <ion-infinite-scroll-content loadingSpinner="dots" />
+      </ion-infinite-scroll>
+    }
+  </div>
+
+  <ion-toast [isOpen]="!!toast()" [message]="toast()" [duration]="2200" position="top" color="secondary" (didDismiss)="toast.set('')" />
+</ion-content>

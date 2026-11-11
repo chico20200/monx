@@ -1,0 +1,88 @@
+.monx-title.small { font-size: 1.3rem; }
+.num-title { font-family: var(--monx-font-text); font-weight: 800; letter-spacing: 1px; }
+.pager .pixel-btn { font-family: var(--monx-font-text); font-weight: 700; }
+
+.pager {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  .pixel-btn { height: 36px; font-size: 0.9rem; padding: 0 10px; }
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  max-width: 420px;
+  margin: 16px auto 0;
+  .pixel-btn { padding: 0 6px; font-size: 0.95rem; }
+}
+
+.strip {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 2px 2px 10px;
+  scroll-snap-type: x mandatory;
+}
+.thumb {
+  flex: 0 0 auto;
+  width: 112px;
+  scroll-snap-align: start;
+  background: var(--monx-card);
+  border: 3px solid var(--monx-blue);
+  border-radius: 10px;
+  padding: 6px 4px 4px;
+  box-shadow: 3px 3px 0 rgba(16, 24, 47, 0.55);
+  img { width: 96px; height: 96px; object-fit: contain; image-rendering: auto; }
+  span { display: block; font-family: var(--monx-font-text); font-size: 0.7rem; color: var(--monx-ink); }
+}
+
+.anims {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+.anim {
+  margin: 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  min-height: 120px;
+  img { max-width: 100%; max-height: 96px; image-rendering: pixelated; }
+  figcaption { font-family: var(--monx-font-pixel); font-size: 0.85rem; margin-top: 6px; }
+}
+
+.state-box.small { padding: 10px; p { margin: 0; } }
+
+.loading {
+  text-align: center;
+  color: #fff;
+  font-family: var(--monx-font-pixel);
+  margin-top: 80px;
+}
+
+.zoom {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #dfe6f7;
+  font-family: var(--monx-font-pixel);
+  position: relative;
+  .close { position: absolute; top: calc(env(safe-area-inset-top) + 12px); right: 12px; z-index: 2; }
+}
+.zoom-area {
+  width: 100%;
+  flex: 1;
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  img { width: 92vw; max-width: 520px; transition: width 0.25s ease; }
+  &.big { align-items: flex-start; justify-content: flex-start; }
+  &.big img { width: 200vw; max-width: none; }
+}

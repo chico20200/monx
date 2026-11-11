@@ -1,0 +1,102 @@
+<ion-header>
+  <ion-toolbar class="monx-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button class="monx-back" defaultHref="/tabs/explorar" text="" />
+    </ion-buttons>
+    <ion-title class="monx-title small num-title">{{ pokemon() ? padId(pokemon()!.id) : 'MONX' }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="monx-bg">
+  <div class="page-wrap">
+    @if (cargando()) {
+      <div class="loading"><ion-spinner name="dots" color="secondary" /><p>Sacando la carta…</p></div>
+    } @else if (error()) {
+      <div class="state-box">
+        <img src="assets/img/fallback.png" alt="" />
+        <h3>¡Ups!</h3>
+        <p>{{ error() }}</p>
+        <button class="pixel-btn yellow" (click)="reintentar()">Reintentar</button>
+      </div>
+    } @else if (pokemon(); as p) {
+      <!-- Navegación entre cartas -->
+      <div class="pager">
+        <button class="pixel-btn" [disabled]="p.id <= 1" (click)="irA(-1)" aria-label="Anterior">
+          <ion-icon name="chevron-back-outline" />{{ p.id > 1 ? padId(p.id - 1) : '' }}
+        </button>
+        <button class="pixel-btn" [disabled]="p.id >= svc.total" (click)="irA(1)" aria-label="Siguiente">
+          {{ p.id < svc.total ? padId(p.id + 1) : '' }}<ion-icon name="chevron-forward-outline" />
+        </button>
+      </div>
+
+      <app-poke-card
+        [pokemon]="p"
+        [categoria]="categoria()"
+        [descripcion]="descripcion()"
+        [shiny]="shiny()"
+        (zoom)="ampliar($event)"
+      />
+
+      <!-- Acciones -->
+      <div class="actions">
+        <button class="pixel-btn" [class.active]="sonando()" [disabled]="!tieneSonido()" (click)="alternarSonido()">
+          <ion-icon [name]="sonando() ? 'stop-outline' : 'volume-high-outline'" />
+          {{ tieneSonido() ? (sonando() ? 'Detener' : 'Sonido') : 'Sin sonido' }}
+        </button>
+        <button class="pixel-btn" [class.active]="shiny()" (click)="shiny.set(!shiny())">
+          <ion-icon name="sparkles-outline" />Shiny
+        </button>
+        <button class="pixel-btn blue" (click)="comparar()">
+          <ion-icon name="git-compare-outline" />Comparar
+        </button>
+      </div>
+
+      <!-- Galería -->
+      <h2 class="section-title"><ion-icon name="images-outline" />Galería ({{ galeria().length }})</h2>
+      @if (galeria().length) {
+        <div class="strip">
+          @for (img of galeria(); track img.url) {
+            <button class="thumb" type="button" (click)="ampliar(img.url)">
+              <img [src]="img.url" [alt]="img.label" loading="lazy" (error)="onImgError($event)" />
+              <span>{{ img.label }}</span>
+            </button>
+          }
+        </div>
+      } @else {
+        <div class="state-box small"><p>Este Pokémon no tiene imágenes adicionales.</p></div>
+      }
+
+      <!-- Animaciones -->
+      <h2 class="section-title"><ion-icon name="film-outline" />Animaciones</h2>
+      @if (animaciones().length) {
+        <div class="anims">
+          @for (a of animaciones(); track a.url) {
+            <figure class="anim pixel-panel">
+              <img [src]="a.url" [alt]="'Animación ' + a.label" (error)="onImgError($event)" />
+              <figcaption>{{ a.label }}</figcaption>
+            </figure>
+          }
+        </div>
+      } @else {
+        <div class="state-box small"><p>No hay animaciones disponibles para {{ prettyName(p.name) }}.</p></div>
+      }
+    }
+  </div>
+
+  <!-- Imagen ampliada -->
+  <ion-modal class="zoom-modal" [isOpen]="!!zoomUrl()" (didDismiss)="zoomUrl.set(null)">
+    <ng-template>
+      <div class="zoom">
+        <button class="pixel-btn yellow close" (click)="zoomUrl.set(null)" aria-label="Cerrar">
+          <ion-icon name="close-outline" />
+        </button>
+        <div class="zoom-area" [class.big]="zoomGrande()" (click)="zoomGrande.set(!zoomGrande())">
+          <img [src]="zoomUrl()" alt="Imagen ampliada" />
+        </div>
+        <p>Toca la imagen para {{ zoomGrande() ? 'reducir' : 'acercar' }}</p>
+      </div>
+    </ng-template>
+  </ion-modal>
+
+  <ion-toast [isOpen]="!!toast()" [message]="toast()" [duration]="2200" position="top" color="secondary" (didDismiss)="toast.set('')" />
+</ion-content>

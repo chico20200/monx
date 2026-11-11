@@ -1,0 +1,117 @@
+:host { display: block; }
+
+.card {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  border-radius: 12px;
+  background: var(--monx-card);
+  border: 4px solid var(--monx-blue);
+  color: var(--monx-ink);
+  font-family: var(--monx-font-pixel);
+  overflow: hidden;
+  box-shadow: 6px 6px 0 rgba(16, 24, 47, 0.55);
+  animation: deal 0.35s ease-out;
+}
+.card.shiny { border-color: var(--monx-yellow); box-shadow: 6px 6px 0 rgba(16, 24, 47, 0.55), 0 0 18px rgba(255, 203, 4, 0.55); }
+
+@keyframes deal {
+  from { transform: translateY(14px) rotate(-1.5deg); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+
+// Franja superior (top_Border de PokeWiki)
+.band {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  background: var(--monx-blue);
+  color: var(--monx-card);
+  .id { font-family: var(--monx-font-text); font-size: 0.95rem; opacity: 0.9; }
+  .name { flex: 1; margin: 0; font-size: 1.55rem; text-align: center; line-height: 1.1; word-break: break-word; }
+}
+
+.ribbon {
+  text-align: center;
+  font-family: var(--monx-font-text);
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: var(--monx-yellow);
+  border-bottom: 2px solid var(--monx-blue);
+  padding: 3px;
+}
+
+// Ventana de imagen (img_pokemon + fondo circular)
+.window {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 14px 0 6px;
+  background: none;
+  border: none;
+  cursor: zoom-in;
+}
+.circle {
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  background: var(--monx-window);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0 -10px 0 rgba(0, 0, 0, 0.08);
+  img { width: 230px; height: 230px; object-fit: contain; filter: drop-shadow(3px 4px 0 rgba(0, 0, 0, 0.18)); }
+}
+.shiny-tag {
+  position: absolute; top: 12px; right: 14px;
+  background: var(--monx-yellow); border: 2px solid var(--monx-blue); border-radius: 8px;
+  padding: 1px 8px; font-size: 0.85rem; color: var(--monx-blue);
+}
+.zoom-hint {
+  position: absolute; bottom: 8px; right: 16px;
+  width: 28px; height: 28px; border-radius: 8px; line-height: 26px;
+  background: var(--monx-button); border-bottom: 2px solid var(--monx-ink); border-right: 2px solid var(--monx-ink);
+  font-size: 1rem; color: var(--monx-ink);
+}
+
+// Datos en dos columnas (left_info / right_info de PokeWiki)
+.info {
+  display: grid;
+  grid-template-columns: 1fr 1.08fr;
+  gap: 8px;
+  padding: 4px 10px 10px;
+  align-items: start;
+}
+.left {
+  font-family: var(--monx-font-text);
+  font-size: 0.85rem;
+  padding-top: 8px;
+  .fact { display: flex; justify-content: space-between; gap: 4px; border-bottom: 1px dotted #a8a8a8; padding: 3px 0; }
+  .fact span { color: #5c5c5c; }
+  .fact strong { font-family: var(--monx-font-pixel); font-weight: 400; font-size: 0.95rem; }
+  .chips { margin: 8px 0 2px; }
+  h3 { font-family: var(--monx-font-pixel); font-size: 1rem; margin: 8px 0 2px; color: var(--monx-blue); }
+  ul { margin: 0; padding-left: 16px; }
+  li { margin: 2px 0; }
+  em { font-size: 0.7rem; background: #ddd; border-radius: 4px; padding: 0 4px; font-style: normal; }
+}
+.right { margin-top: 6px; padding: 9px; }
+
+// Texto de carta
+.flavor {
+  margin: 0 10px 12px;
+  padding: 8px 10px;
+  font-family: var(--monx-font-text);
+  font-style: italic;
+  font-size: 0.82rem;
+  line-height: 1.35;
+  background: #fff;
+  border: 2px solid var(--monx-blue);
+  border-radius: 8px;
+}
+
+@media (max-width: 350px) {
+  .info { grid-template-columns: 1fr; }
+}

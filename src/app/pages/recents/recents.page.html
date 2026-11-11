@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar class="monx-toolbar">
+    <ion-title class="monx-title">Recientes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="monx-bg">
+  <div class="page-wrap">
+    @if (history.recientes().length) {
+      <div class="head">
+        <span>{{ history.recientes().length }} carta(s) vista(s)</span>
+        <button class="pixel-btn" (click)="history.limpiar()"><ion-icon name="trash-outline" />Borrar</button>
+      </div>
+      <ul class="list">
+        @for (r of history.recientes(); track r.id) {
+          <li class="item" (click)="abrir(r.id)">
+            <div class="circle"><img [src]="svc.imagenPorId(r.id)" [alt]="r.name" loading="lazy" (error)="onImgError($event)" /></div>
+            <div class="text">
+              <strong>{{ prettyName(r.name) }}</strong>
+              <small>{{ padId(r.id) }} · {{ hace(r.fecha) }}</small>
+            </div>
+            <app-type-icons [types]="r.types" [size]="24" />
+          </li>
+        }
+      </ul>
+    } @else {
+      <div class="state-box">
+        <img src="assets/img/monx.png" alt="" class="pixel" />
+        <h3>Tu mazo está vacío</h3>
+        <p>Los Pokémon que abras aparecerán aquí.</p>
+      </div>
+    }
+
+    <!-- Acerca de / aviso legal -->
+    <h2 class="section-title">Acerca de {{ appName }}</h2>
+    <section class="about pixel-panel">
+      <div class="brand">
+        <img src="assets/img/monx.png" alt="Ícono de Monx" />
+        <div>
+          <strong>{{ appName }}</strong>
+          <span>Versión {{ version }}</span>
+        </div>
+      </div>
+      <p>
+        Aplicación educativa desarrollada con Ionic, Angular y Capacitor para la asignatura
+        Desarrollo de Aplicaciones Móviles (ESFOT · EPN).
+      </p>
+      <p>
+        Datos e imágenes obtenidos de <strong>PokéAPI</strong> (pokeapi.co), un servicio externo gratuito
+        e independiente.
+      </p>
+      <p class="legal">
+        Monx es una app no oficial, sin fines de lucro, y no está afiliada, patrocinada ni aprobada por
+        Nintendo, Game Freak, Creatures Inc. ni The Pokémon Company. Pokémon y los nombres de sus
+        personajes son marcas registradas de sus respectivos titulares.
+      </p>
+      <p class="legal">
+        Privacidad: Monx no solicita cuentas ni recopila datos personales. El historial se guarda solo en
+        este dispositivo.
+      </p>
+    </section>
+  </div>
+</ion-content>
