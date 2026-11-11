@@ -187,3 +187,4 @@ _Video de demostración: enlace_
 Monx es un proyecto educativo, **no oficial** y sin fines de lucro. No está afiliado, patrocinado ni aprobado por Nintendo, Game Freak, Creatures Inc. ni The Pokémon Company. Pokémon y los nombres de sus personajes son marcas registradas de sus respectivos titulares. Los datos, imágenes y sonidos se obtienen en tiempo de ejecución desde [PokéAPI](https://pokeapi.co/), un servicio gratuito e independiente; la app no los redistribuye dentro del APK.
 
 El ícono, la pantalla de inicio y el nombre **Monx** son creaciones originales del proyecto.
+# monx
