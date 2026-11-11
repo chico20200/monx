@@ -172,6 +172,7 @@ Material de la ficha de Uptodown en [`store/`](store/): ícono 512×512, imagen 
 Política de privacidad: [`PRIVACY.md`](PRIVACY.md).
 
 ## 🧪 Evidencias de prueba
+<img width="1340" height="678" alt="image" src="https://github.com/user-attachments/assets/5ee8cf97-d183-48e2-8393-f6e04a9df6eb" />
 
 | Prueba | Dispositivo | Resultado |
 |---|---|---|
@@ -188,3 +189,5 @@ Monx es un proyecto educativo, **no oficial** y sin fines de lucro. No está afi
 
 El ícono, la pantalla de inicio y el nombre **Monx** son creaciones originales del proyecto.
 # monx
+
+
