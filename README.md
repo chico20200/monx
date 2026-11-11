@@ -173,6 +173,7 @@ Política de privacidad: [`PRIVACY.md`](PRIVACY.md).
 
 ## 🧪 Evidencias de prueba
 <img width="1340" height="678" alt="image" src="https://github.com/user-attachments/assets/5ee8cf97-d183-48e2-8393-f6e04a9df6eb" />
+<img width="1347" height="668" alt="image" src="https://github.com/user-attachments/assets/44c8b1e5-44f9-4ed1-b8e0-02989a954728" />
 
 | Prueba | Dispositivo | Resultado |
 |---|---|---|
