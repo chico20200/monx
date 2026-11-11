@@ -175,6 +175,7 @@ Política de privacidad: [`PRIVACY.md`](PRIVACY.md).
 <img width="1340" height="678" alt="image" src="https://github.com/user-attachments/assets/5ee8cf97-d183-48e2-8393-f6e04a9df6eb" />
 <img width="1347" height="668" alt="image" src="https://github.com/user-attachments/assets/44c8b1e5-44f9-4ed1-b8e0-02989a954728" />
 <img width="1339" height="679" alt="image" src="https://github.com/user-attachments/assets/d2145cce-b1bc-431e-b9a6-f55c5e4038f8" />
+<img width="1327" height="671" alt="image" src="https://github.com/user-attachments/assets/e2c421be-6d75-4450-a806-7d37684fc8ae" />
 
 | Prueba | Dispositivo | Resultado |
 |---|---|---|
