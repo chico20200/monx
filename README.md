@@ -177,18 +177,16 @@ Política de privacidad: [`PRIVACY.md`](PRIVACY.md).
 <img width="1339" height="679" alt="image" src="https://github.com/user-attachments/assets/d2145cce-b1bc-431e-b9a6-f55c5e4038f8" />
 <img width="1327" height="671" alt="image" src="https://github.com/user-attachments/assets/e2c421be-6d75-4450-a806-7d37684fc8ae" />
 
-| Prueba | Dispositivo | Resultado |
-|---|---|---|
-| Listado, búsqueda y detalle | _Modelo · Android XX_ | ✅ |
-| Sonido, galería, imagen ampliada y animación | _Modelo · Android XX_ | ✅ |
-| Comparación (2 parejas) | _Modelo · Android XX_ | ✅ |
-| Instalación del APK firmado | _Modelo · Android XX_ | ✅ |
+Rechazo de primera apliación
+<img width="720" height="1600" alt="Rechazo primera app" src="https://github.com/user-attachments/assets/cc0e4b5d-d59b-4d1f-87a5-8153bcd5ec07" />
+Subiendo la segunda versión sin uso de la pokeapi.co
+<img width="1645" height="213" alt="Captura desde 2026-11-21 02-04-01" src="https://github.com/user-attachments/assets/2f2da90d-2a6d-4750-9e19-a652520787e4" />
+Nueva app con monstruos originales
+<img width="720" height="1600" alt="image" src="https://github.com/user-attachments/assets/53a27270-4eeb-466b-8c3d-3deb075fdee4" />
+<img width="720" height="1600" alt="image" src="https://github.com/user-attachments/assets/8385eb25-6173-436d-b936-a6daed0a3053" />
+
 
 _Video de demostración: enlace_
-
-## ⚖️ Aviso legal
-
-Monx es un proyecto educativo, **no oficial** y sin fines de lucro. No está afiliado, patrocinado ni aprobado por Nintendo, Game Freak, Creatures Inc. ni The Pokémon Company. Pokémon y los nombres de sus personajes son marcas registradas de sus respectivos titulares. Los datos, imágenes y sonidos se obtienen en tiempo de ejecución desde [PokéAPI](https://pokeapi.co/), un servicio gratuito e independiente; la app no los redistribuye dentro del APK.
 
 El ícono, la pantalla de inicio y el nombre **Monx** son creaciones originales del proyecto.
 # monx
