@@ -20,6 +20,10 @@
 
 ---
 
+_Video de demostración: https://vt.tiktok.com/ZSpocHvoa/
+
+---
+
 ## 📱 Funcionalidades
 
 | Nivel | Funcionalidad | Dónde |
@@ -186,7 +190,6 @@ Nueva app con monstruos originales
 <img width="720" height="1600" alt="image" src="https://github.com/user-attachments/assets/8385eb25-6173-436d-b936-a6daed0a3053" />
 
 
-_Video de demostración: enlace_
 
 El ícono, la pantalla de inicio y el nombre **Monx** son creaciones originales del proyecto.
 # monx
